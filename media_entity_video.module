@@ -27,7 +27,7 @@ function media_entity_video_theme() {
 /**
  * Implements template_preprocess_media_file_formatter().
  */
-function template_preprocess_media_file_formatter(&$vars) {
+function media_entity_video_preprocess_media_file_formatter(&$vars) {
   $file = $vars['file'];
   $file_entity = ($file instanceof File) ? $file : File::load($file->fid);
   $url = file_create_url($file_entity->getFileUri());
