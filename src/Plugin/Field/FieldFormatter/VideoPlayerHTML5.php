@@ -81,7 +81,7 @@ class VideoPlayerHTML5 extends VideoPlayerBase {
     foreach ($this->getEntitiesToView($items, $langcode) as $delta => $file) {
       $item = $file->_referringItem;
       $elements[$delta] = array(
-        '#theme' => 'media_file_formatter',
+        '#theme' => 'media_video_file_formatter',
         '#file' => $file,
         '#description' => $item->description,
         '#value' => $provide_download_link,
