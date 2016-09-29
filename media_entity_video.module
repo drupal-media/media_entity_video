@@ -42,8 +42,5 @@ function media_entity_video_preprocess_media_video_file_formatter(&$vars) {
   if ($mimetype == 'video/ogg') {
     $vars['mimetype'] = 'video/ogg';
   }
-  if ($mimetype == 'video/ogv') {
-    $vars['mimetype'] = 'video/ogv';
-  }
   $vars['media_link'] = $url;
 }
