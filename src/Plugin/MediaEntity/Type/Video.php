@@ -60,20 +60,13 @@ class Video extends MediaTypeBase {
    * {@inheritdoc}
    */
   public function getDefaultThumbnail() {
-    return $this->config->get('icon_base') . '/image.png';
+    return $this->config->get('icon_base') . '/video.png';
   }
 
   /**
    * {@inheritdoc}
    */
   public function thumbnail(MediaInterface $media) {
-    $source_field = $this->configuration['source_field'];
-
-    /** @var \Drupal\file\FileInterface $file */
-    if ($file = $media->{$source_field}->entity) {
-      return $this->config->get('icon_base') . '/image.png';
-    }
-
     return $this->getDefaultThumbnail();
   }
 
