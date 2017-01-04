@@ -24,7 +24,7 @@ class Video extends MediaTypeBase {
     /** @var \Drupal\media_entity\MediaBundleInterface $bundle */
     $bundle = $form_state->getFormObject()->getEntity();
     $options = [];
-    $allowed_field_types = ['file'];
+    $allowed_field_types = ['file', 'video'];
     foreach ($this->entityFieldManager->getFieldDefinitions('media', $bundle->id()) as $field_name => $field) {
       if (in_array($field->getType(), $allowed_field_types) && !$field->getFieldStorageDefinition()->isBaseField()) {
         $options[$field_name] = $field->getLabel();
