@@ -20,6 +20,34 @@ class Video extends MediaTypeBase {
   /**
    * {@inheritdoc}
    */
+  public function providedFields() {
+    return [
+      'mime' => $this->t('File MIME'),
+    ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getField(MediaInterface $media, $name) {
+    $source_field = $this->configuration['source_field'];
+
+    // Get the file document.
+    /** @var \Drupal\file\FileInterface $file */
+    $file = $media->{$source_field}->entity;
+
+    // Return the field.
+    switch ($name) {
+      case 'mime':
+        return !$file->filemime->isEmpty() ? $file->getMimeType() : FALSE;
+    }
+
+    return FALSE;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     /** @var \Drupal\media_entity\MediaBundleInterface $bundle */
     $bundle = $form_state->getFormObject()->getEntity();
@@ -40,20 +68,6 @@ class Video extends MediaTypeBase {
     ];
 
     return $form;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function providedFields() {
-    return [];
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getField(MediaInterface $media, $name) {
-    return FALSE;
   }
 
   /**
